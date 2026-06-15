@@ -1,58 +1,58 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-.app{width:100vw;height: 100vh;font-family:var(--font-sans)}
+.app{width:100vw;height: 100vh;padding:20px 80px;font-family:var(--font-sans)}
 .tab-bar{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);position:sticky;top:0;z-index:10}
-.tab{flex:1;padding:10px 2px;font-size:24px;font-weight:500;color:var(--color-text-secondary);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent}
+.tab{flex:1;padding:10px 2px;font-size:36px;font-weight:500;color:var(--color-text-secondary);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent}
 .tab.active{color:var(--color-text-primary);border-bottom:2px solid #3B6D11}
 .sec{padding:1rem;display:none}
 .sec.active{display:block}
 .hero{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1rem}
-.ht{font-size:24px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
-.hs{font-size:18px;color:var(--color-text-secondary);line-height:1.5}
+.ht{font-size:36px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.hs{font-size:28px;color:var(--color-text-secondary);line-height:1.5}
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:1rem}
 .mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:11px}
-.ml{font-size:16px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
-.mv{font-size:24px;font-weight:500;color:var(--color-text-primary)}
-.mu{font-size:16px;color:var(--color-text-secondary);font-weight:400}
-.sh{font-size:16px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;padding:10px 0 5px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:8px}
+.ml{font-size:24px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.mv{font-size:36px;font-weight:500;color:var(--color-text-primary)}
+.mu{font-size:24px;color:var(--color-text-secondary);font-weight:400}
+.sh{font-size:24px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;padding:10px 0 5px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:8px}
 .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.9rem 1.1rem;margin-bottom:10px}
-.kr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:18px}
+.kr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:28px}
 .kr:last-child{border-bottom:none}
 .kn{color:var(--color-text-secondary)}
 .kv{font-weight:500;color:var(--color-text-primary)}
 .day-btn{width:100%;text-align:left;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:7px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .day-btn.open{border-color:#3B6D11;background:#EAF3DE}
-.dn{font-size:18px;font-weight:500;color:var(--color-text-primary)}
-.df{font-size:16px;color:var(--color-text-secondary);margin-top:2px}
+.dn{font-size:28px;font-weight:500;color:var(--color-text-primary)}
+.df{font-size:24px;color:var(--color-text-secondary);margin-top:2px}
 .detail{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:.9rem;margin-top:-3px;margin-bottom:7px;display:none}
 .detail.open{display:block}
 .exrow{padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
 .exrow:last-child{border-bottom:none}
-.exname{font-size:18px;font-weight:500;color:var(--color-text-primary)}
-.exd{font-size:16px;color:var(--color-text-secondary);margin-top:2px}
-.extip{font-size:16px;color:#3B6D11;margin-top:2px;font-style:italic}
-.exalt{font-size:16px;color:#854F0B;margin-top:1px}
+.exname{font-size:28px;font-weight:500;color:var(--color-text-primary)}
+.exd{font-size:24px;color:var(--color-text-secondary);margin-top:2px}
+.extip{font-size:24px;color:#3B6D11;margin-top:2px;font-style:italic}
+.exalt{font-size:24px;color:#854F0B;margin-top:1px}
 .chev{transition:transform .2s;color:var(--color-text-secondary);font-size:15px}
 .day-btn.open .chev{transform:rotate(180deg)}
-.tag{display:inline-block;font-size:16px;font-weight:500;padding:2px 7px;border-radius:10px;margin-right:3px;margin-bottom:6px}
+.tag{display:inline-block;font-size:24px;font-weight:500;padding:2px 7px;border-radius:10px;margin-right:3px;margin-bottom:6px}
 .tg{background:#EAF3DE;color:#3B6D11}
 .tb{background:#E6F1FB;color:#185FA5}
 .tr{background:#FCEBEB;color:#A32D2D}
 .tp{background:#EEEDFE;color:#3C3489}
 .ta{background:#FAEEDA;color:#854F0B}
 .mcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.9rem;margin-bottom:8px}
-.mtime{font-size:16px;font-weight:500;text-transform:uppercase;letter-spacing:.4px;color:#185FA5;margin-bottom:4px}
-.mname{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
-.mdesc{font-size:18px;color:var(--color-text-secondary);line-height:1.5}
+.mtime{font-size:24px;font-weight:500;text-transform:uppercase;letter-spacing:.4px;color:#185FA5;margin-bottom:4px}
+.mname{font-size:28px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.mdesc{font-size:28px;color:var(--color-text-secondary);line-height:1.5}
 .macros{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
-.mac{font-size:16px;padding:2px 7px;border-radius:10px;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.mac{font-size:24px;padding:2px 7px;border-radius:10px;background:var(--color-background-secondary);color:var(--color-text-secondary)}
 .pr{margin-bottom:8px}
-.plbl{display:flex;justify-content:space-between;font-size:18px;margin-bottom:3px;color:var(--color-text-secondary)}
+.plbl{display:flex;justify-content:space-between;font-size:28px;margin-bottom:3px;color:var(--color-text-secondary)}
 .ptrack{height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
 .pfill{height:100%;border-radius:3px}
-.wbox{background:#FAEEDA;border-left:3px solid #854F0B;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:16px;line-height:1.5;color:#633806}
-.ibox{background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:16px;line-height:1.5;color:#27500A}
+.wbox{background:#FAEEDA;border-left:3px solid #854F0B;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:24px;line-height:1.5;color:#633806}
+.ibox{background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:24px;line-height:1.5;color:#27500A}
 .rest{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:14px;text-align:center;margin-bottom:7px}
 </style>
 
@@ -104,7 +104,7 @@
     <div class="pr"><div class="plbl"><span>Белок · 190 г</span><span style="color:#185FA5">760 ккал · 34%</span></div><div class="ptrack"><div class="pfill" style="width:34%;background:#185FA5"></div></div></div>
     <div class="pr"><div class="plbl"><span>Углеводы · 235 г</span><span style="color:#3B6D11">940 ккал · 42%</span></div><div class="ptrack"><div class="pfill" style="width:42%;background:#3B6D11"></div></div></div>
     <div class="pr"><div class="plbl"><span>Жиры · 60 г</span><span style="color:#854F0B">540 ккал · 24%</span></div><div class="ptrack"><div class="pfill" style="width:24%;background:#854F0B"></div></div></div>
-    <div style="font-size:16px;color:var(--color-text-secondary);margin-top:5px">Итого: 760+940+540 = 2240 ккал ≈ 2250</div>
+    <div style="font-size:24px;color:var(--color-text-secondary);margin-top:5px">Итого: 760+940+540 = 2240 ккал ≈ 2250</div>
   </div>
 </div>
 
@@ -127,21 +127,21 @@
   <div id="meals-list"></div>
   <div class="sh">Принципы щадящего питания</div>
   <div class="card">
-    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Готовить на пару, варить, тушить</span><span style="font-size:16px;color:var(--color-text-secondary)">не жарить</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Овощи термически обработаны</span><span style="font-size:16px;color:var(--color-text-secondary)">не сырые</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Пробиотики</span><span style="font-size:16px;color:var(--color-text-secondary)">греч. йогурт, кефир</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Есть медленно, пережёвывать</span><span style="font-size:16px;color:var(--color-text-secondary)">снижает газообразование</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Не пить воду во время еды</span><span style="font-size:16px;color:var(--color-text-secondary)">за 20 мин до / после</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: бобовые, капуста</span><span style="font-size:16px;color:var(--color-text-secondary)">газообразование</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: цельное молоко</span><span style="font-size:16px;color:var(--color-text-secondary)">заменить на греч. йогурт</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Готовить на пару, варить, тушить</span><span style="font-size:24px;color:var(--color-text-secondary)">не жарить</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Овощи термически обработаны</span><span style="font-size:24px;color:var(--color-text-secondary)">не сырые</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Пробиотики</span><span style="font-size:24px;color:var(--color-text-secondary)">греч. йогурт, кефир</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Есть медленно, пережёвывать</span><span style="font-size:24px;color:var(--color-text-secondary)">снижает газообразование</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Не пить воду во время еды</span><span style="font-size:24px;color:var(--color-text-secondary)">за 20 мин до / после</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: бобовые, капуста</span><span style="font-size:24px;color:var(--color-text-secondary)">газообразование</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: цельное молоко</span><span style="font-size:24px;color:var(--color-text-secondary)">заменить на греч. йогурт</span></div>
   </div>
   <div class="sh">Добавки</div>
   <div class="card">
-    <div class="kr"><span class="kn">Креатин моногидрат</span><span style="font-size:16px;color:var(--color-text-secondary)">5 г/день постоянно</span></div>
-    <div class="kr"><span class="kn">Омега-3</span><span style="font-size:16px;color:var(--color-text-secondary)">2–3 г EPA+DHA в день</span></div>
-    <div class="kr"><span class="kn">Витамин D3 + K2</span><span style="font-size:16px;color:var(--color-text-secondary)">2000–4000 МЕ/день</span></div>
-    <div class="kr"><span class="kn">Магний глицинат</span><span style="font-size:16px;color:var(--color-text-secondary)">300 мг перед сном</span></div>
-    <div class="kr"><span class="kn">Пробиотики (опц.)</span><span style="font-size:16px;color:var(--color-text-secondary)">Lactobacillus, утром</span></div>
+    <div class="kr"><span class="kn">Креатин моногидрат</span><span style="font-size:24px;color:var(--color-text-secondary)">5 г/день постоянно</span></div>
+    <div class="kr"><span class="kn">Омега-3</span><span style="font-size:24px;color:var(--color-text-secondary)">2–3 г EPA+DHA в день</span></div>
+    <div class="kr"><span class="kn">Витамин D3 + K2</span><span style="font-size:24px;color:var(--color-text-secondary)">2000–4000 МЕ/день</span></div>
+    <div class="kr"><span class="kn">Магний глицинат</span><span style="font-size:24px;color:var(--color-text-secondary)">300 мг перед сном</span></div>
+    <div class="kr"><span class="kn">Пробиотики (опц.)</span><span style="font-size:24px;color:var(--color-text-secondary)">Lactobacillus, утром</span></div>
   </div>
 </div>
 
@@ -151,16 +151,16 @@
     <div class="hs">Прогрессия, восстановление, долгосрочное здоровье</div>
   </div>
   <div class="sh">Прогрессия нагрузки</div>
-  <div class="card"><div style="font-size:18px;color:var(--color-text-secondary);line-height:1.7">Каждые 1–2 недели: +2.5 кг или +1–2 повт. Целевой RIR 1–2. На дефиците сила стагнирует — это нормально. Главное — не снижать. Веди дневник.</div></div>
+  <div class="card"><div style="font-size:28px;color:var(--color-text-secondary);line-height:1.7">Каждые 1–2 недели: +2.5 кг или +1–2 повт. Целевой RIR 1–2. На дефиците сила стагнирует — это нормально. Главное — не снижать. Веди дневник.</div></div>
   <div class="sh">Восстановление</div>
   <div class="card">
-    <div class="kr"><span class="kn"><i class="ti ti-moon" aria-hidden="true"></i> Сон</span><span style="font-size:16px;color:var(--color-text-secondary)">8+ ч · GH выделяется ночью</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-walk" aria-hidden="true"></i> 15 000 шагов</span><span style="font-size:16px;color:var(--color-text-secondary)">главный инструмент жиросжигания</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-yoga" aria-hidden="true"></i> Мобилити</span><span style="font-size:16px;color:var(--color-text-secondary)">5–7 мин после тренировки</span></div>
-    <div class="kr"><span class="kn"><i class="ti ti-heart" aria-hidden="true"></i> Суббота — полный отдых</span><span style="font-size:16px;color:var(--color-text-secondary)">ЦНС восстанавливается</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-moon" aria-hidden="true"></i> Сон</span><span style="font-size:24px;color:var(--color-text-secondary)">8+ ч · GH выделяется ночью</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-walk" aria-hidden="true"></i> 15 000 шагов</span><span style="font-size:24px;color:var(--color-text-secondary)">главный инструмент жиросжигания</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-yoga" aria-hidden="true"></i> Мобилити</span><span style="font-size:24px;color:var(--color-text-secondary)">5–7 мин после тренировки</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-heart" aria-hidden="true"></i> Суббота — полный отдых</span><span style="font-size:24px;color:var(--color-text-secondary)">ЦНС восстанавливается</span></div>
   </div>
   <div class="sh">Контроль и плато</div>
-  <div class="card"><div style="font-size:18px;color:var(--color-text-secondary);line-height:1.7">Взвешивайся раз в неделю, утром натощак. Смотри на среднее за 2 недели. Фото раз в 4 недели. Плато 3+ нед → проверь трекер калорий + добавь 1500–2000 шагов. Не снижай калории ниже 2100.</div></div>
+  <div class="card"><div style="font-size:28px;color:var(--color-text-secondary);line-height:1.7">Взвешивайся раз в неделю, утром натощак. Смотри на среднее за 2 недели. Фото раз в 4 недели. Плато 3+ нед → проверь трекер калорий + добавь 1500–2000 шагов. Не снижай калории ниже 2100.</div></div>
 </div>
 </div>
 
@@ -269,7 +269,7 @@ function renderDays(){
   days.forEach((d,i)=>{
     const w=document.createElement('div');
     if(!d.exs.length){
-      w.innerHTML=`<div class="rest"><div style="font-size:22px;color:var(--color-text-secondary);margin-bottom:6px"><i class="ti ti-bed" aria-hidden="true"></i></div><div style="font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">Суббота — день отдыха</div><div style="font-size:16px;color:var(--color-text-secondary)">Сон 8+ ч · мобилити 10 мин · лёгкая прогулка</div></div>`;
+      w.innerHTML=`<div class="rest"><div style="font-size:32px;color:var(--color-text-secondary);margin-bottom:6px"><i class="ti ti-bed" aria-hidden="true"></i></div><div style="font-size:28px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">Суббота — день отдыха</div><div style="font-size:24px;color:var(--color-text-secondary)">Сон 8+ ч · мобилити 10 мин · лёгкая прогулка</div></div>`;
     } else {
       const tags=d.tags.map((t,j)=>`<span class="tag ${t}">${d.tl[j]}</span>`).join('');
       w.innerHTML=`<button class="day-btn" onclick="tog(${i})" id="b${i}"><div><div class="dn">${d.name}</div><div class="df">${d.focus}</div></div><i class="ti ti-chevron-down chev" aria-hidden="true"></i></button>
