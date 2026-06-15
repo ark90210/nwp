@@ -1,0 +1,308 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.app{max-width:420px;margin:0 auto;padding:0 0 2rem;font-family:var(--font-sans)}
+.tab-bar{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);position:sticky;top:0;z-index:10}
+.tab{flex:1;padding:10px 2px;font-size:11px;font-weight:500;color:var(--color-text-secondary);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid #3B6D11}
+.sec{padding:1rem;display:none}
+.sec.active{display:block}
+.hero{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1rem}
+.ht{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.hs{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:1rem}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:11px}
+.ml{font-size:10px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.mv{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.mu{font-size:10px;color:var(--color-text-secondary);font-weight:400}
+.sh{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;padding:10px 0 5px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:8px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.9rem 1.1rem;margin-bottom:10px}
+.kr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.kr:last-child{border-bottom:none}
+.kn{color:var(--color-text-secondary)}
+.kv{font-weight:500;color:var(--color-text-primary)}
+.day-btn{width:100%;text-align:left;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:7px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.day-btn.open{border-color:#3B6D11;background:#EAF3DE}
+.dn{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.df{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.detail{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:.9rem;margin-top:-3px;margin-bottom:7px;display:none}
+.detail.open{display:block}
+.exrow{padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.exrow:last-child{border-bottom:none}
+.exname{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.exd{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.extip{font-size:11px;color:#3B6D11;margin-top:2px;font-style:italic}
+.exalt{font-size:11px;color:#854F0B;margin-top:1px}
+.chev{transition:transform .2s;color:var(--color-text-secondary);font-size:15px}
+.day-btn.open .chev{transform:rotate(180deg)}
+.tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;margin-right:3px;margin-bottom:6px}
+.tg{background:#EAF3DE;color:#3B6D11}
+.tb{background:#E6F1FB;color:#185FA5}
+.tr{background:#FCEBEB;color:#A32D2D}
+.tp{background:#EEEDFE;color:#3C3489}
+.ta{background:#FAEEDA;color:#854F0B}
+.mcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.9rem;margin-bottom:8px}
+.mtime{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.4px;color:#185FA5;margin-bottom:4px}
+.mname{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.mdesc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.macros{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.mac{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.pr{margin-bottom:8px}
+.plbl{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;color:var(--color-text-secondary)}
+.ptrack{height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
+.pfill{height:100%;border-radius:3px}
+.wbox{background:#FAEEDA;border-left:3px solid #854F0B;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:11px;line-height:1.5;color:#633806}
+.ibox{background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:9px 12px;margin-bottom:9px;font-size:11px;line-height:1.5;color:#27500A}
+.rest{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:14px;text-align:center;margin-bottom:7px}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Программа тренировок и питания v3 — финальная версия</h2>
+
+<div class="app">
+<div class="tab-bar">
+  <button class="tab active" onclick="S('ov',this)">Обзор</button>
+  <button class="tab" onclick="S('tr',this)">Тренировки</button>
+  <button class="tab" onclick="S('nu',this)">Питание</button>
+  <button class="tab" onclick="S('ti',this)">Советы</button>
+</div>
+
+<div id="ov" class="sec active">
+  <div class="hero">
+    <div class="ht">Операция Антижопич 2026</div>
+    <div class="hs">27 лет · 180 см · 95 → 80 кг · PPL×2 · Вс–Пт + Сб отдых</div>
+  </div>
+  <div class="g2">
+    <div class="mc"><div class="ml">Калории/день</div><div class="mv">2250 <span class="mu">ккал</span></div></div>
+    <div class="mc"><div class="ml">Дефицит</div><div class="mv">~780 <span class="mu">ккал/д</span></div></div>
+    <div class="mc"><div class="ml">Темп</div><div class="mv">~0.75 <span class="mu">кг/нед</span></div></div>
+    <div class="mc"><div class="ml">Срок до цели</div><div class="mv">~20 <span class="mu">нед</span></div></div>
+  </div>
+
+  <div class="sh">Расчёт TDEE</div>
+  <div class="card">
+    <div class="kr"><span class="kn">BMR (Mifflin)</span><span class="kv">1971 ккал</span></div>
+    <div class="kr"><span class="kn">15 000 шагов/день</span><span class="kv">+850 ккал</span></div>
+    <div class="kr"><span class="kn">Силовая (реально, 6×/нед)</span><span class="kv">+230 ккал/д среднее</span></div>
+    <div class="kr"><span class="kn">TDEE тренировочный день</span><span class="kv">≈3050 ккал</span></div>
+    <div class="kr"><span class="kn">TDEE день отдыха</span><span class="kv">≈2820 ккал</span></div>
+    <div class="kr"><span class="kn" style="font-weight:500">Средний TDEE</span><span class="kv" style="color:#A32D2D">≈3010 ккал</span></div>
+    <div class="kr"><span class="kn" style="font-weight:500">Целевой калораж</span><span class="kv" style="color:#A32D2D">2200–2250 ккал</span></div>
+  </div>
+
+  <div class="sh">Срок операции</div>
+  <div class="card">
+    <div class="kr"><span class="kn">Цель сбросить</span><span class="kv">15 кг жира</span></div>
+    <div class="kr"><span class="kn">Дефицит в неделю</span><span class="kv">≈5460 ккал</span></div>
+    <div class="kr"><span class="kn">Потеря в неделю</span><span class="kv">≈0.72 кг</span></div>
+    <div class="kr"><span class="kn" style="font-weight:500">Расчётный срок</span><span class="kv" style="color:#3B6D11">≈20–21 неделя</span></div>
+    <div class="kr"><span class="kn">С учётом плато (+15%)</span><span class="kv">23–24 недели</span></div>
+  </div>
+  <div class="ibox"><i class="ti ti-calendar" aria-hidden="true"></i> При старте сейчас — цель достигается ориентировочно через 5–6 месяцев. Реалистичный диапазон 20–24 недели с учётом плато и рефидов.</div>
+
+  <div class="sh">Макросы при 2250 ккал</div>
+  <div class="card" style="padding:.9rem">
+    <div class="pr"><div class="plbl"><span>Белок · 190 г</span><span style="color:#185FA5">760 ккал · 34%</span></div><div class="ptrack"><div class="pfill" style="width:34%;background:#185FA5"></div></div></div>
+    <div class="pr"><div class="plbl"><span>Углеводы · 235 г</span><span style="color:#3B6D11">940 ккал · 42%</span></div><div class="ptrack"><div class="pfill" style="width:42%;background:#3B6D11"></div></div></div>
+    <div class="pr"><div class="plbl"><span>Жиры · 60 г</span><span style="color:#854F0B">540 ккал · 24%</span></div><div class="ptrack"><div class="pfill" style="width:24%;background:#854F0B"></div></div></div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px">Итого: 760+940+540 = 2240 ккал ≈ 2250</div>
+  </div>
+</div>
+
+<div id="tr" class="sec">
+  <div class="hero">
+    <div class="ht">PPL × 2 — расписание</div>
+    <div class="hs">Вс Push A · Пн Pull A · Вт Legs A · Ср Push B · Чт Pull B · Пт Legs B · Сб отдых</div>
+  </div>
+  <div class="ibox"><i class="ti ti-hand-click" aria-hidden="true"></i> Нажмите на день. Зелёным — тренерская подсказка, оранжевым — альтернативное упражнение.</div>
+  <div id="days-list"></div>
+</div>
+
+<div id="nu" class="sec">
+  <div class="hero">
+    <div class="ht">Питание щадящее для ЖКТ</div>
+    <div class="hs">2250 ккал · Б 190 г · У 235 г · Ж 60 г · 5 приёмов</div>
+  </div>
+  <div class="ibox"><i class="ti ti-leaf" aria-hidden="true"></i> Рацион подобран с учётом склонности к метеоризму: исключены бобовые, капуста, молоко, жирное мясо, сырые овощи в больших количествах.</div>
+  <div class="sh">Приёмы пищи</div>
+  <div id="meals-list"></div>
+  <div class="sh">Принципы щадящего питания</div>
+  <div class="card">
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Готовить на пару, варить, тушить</span><span style="font-size:11px;color:var(--color-text-secondary)">не жарить</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Овощи термически обработаны</span><span style="font-size:11px;color:var(--color-text-secondary)">не сырые</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Пробиотики</span><span style="font-size:11px;color:var(--color-text-secondary)">греч. йогурт, кефир</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-check" aria-hidden="true" style="color:#3B6D11"></i> Есть медленно, пережёвывать</span><span style="font-size:11px;color:var(--color-text-secondary)">снижает газообразование</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Не пить воду во время еды</span><span style="font-size:11px;color:var(--color-text-secondary)">за 20 мин до / после</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: бобовые, капуста</span><span style="font-size:11px;color:var(--color-text-secondary)">газообразование</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-x" aria-hidden="true" style="color:#A32D2D"></i> Исключить: цельное молоко</span><span style="font-size:11px;color:var(--color-text-secondary)">заменить на греч. йогурт</span></div>
+  </div>
+  <div class="sh">Добавки</div>
+  <div class="card">
+    <div class="kr"><span class="kn">Креатин моногидрат</span><span style="font-size:11px;color:var(--color-text-secondary)">5 г/день постоянно</span></div>
+    <div class="kr"><span class="kn">Омега-3</span><span style="font-size:11px;color:var(--color-text-secondary)">2–3 г EPA+DHA в день</span></div>
+    <div class="kr"><span class="kn">Витамин D3 + K2</span><span style="font-size:11px;color:var(--color-text-secondary)">2000–4000 МЕ/день</span></div>
+    <div class="kr"><span class="kn">Магний глицинат</span><span style="font-size:11px;color:var(--color-text-secondary)">300 мг перед сном</span></div>
+    <div class="kr"><span class="kn">Пробиотики (опц.)</span><span style="font-size:11px;color:var(--color-text-secondary)">Lactobacillus, утром</span></div>
+  </div>
+</div>
+
+<div id="ti" class="sec">
+  <div class="hero">
+    <div class="ht">Советы тренера</div>
+    <div class="hs">Прогрессия, восстановление, долгосрочное здоровье</div>
+  </div>
+  <div class="sh">Прогрессия нагрузки</div>
+  <div class="card"><div style="font-size:12px;color:var(--color-text-secondary);line-height:1.7">Каждые 1–2 недели: +2.5 кг или +1–2 повт. Целевой RIR 1–2. На дефиците сила стагнирует — это нормально. Главное — не снижать. Веди дневник.</div></div>
+  <div class="sh">Восстановление</div>
+  <div class="card">
+    <div class="kr"><span class="kn"><i class="ti ti-moon" aria-hidden="true"></i> Сон</span><span style="font-size:11px;color:var(--color-text-secondary)">8+ ч · GH выделяется ночью</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-walk" aria-hidden="true"></i> 15 000 шагов</span><span style="font-size:11px;color:var(--color-text-secondary)">главный инструмент жиросжигания</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-yoga" aria-hidden="true"></i> Мобилити</span><span style="font-size:11px;color:var(--color-text-secondary)">5–7 мин после тренировки</span></div>
+    <div class="kr"><span class="kn"><i class="ti ti-heart" aria-hidden="true"></i> Суббота — полный отдых</span><span style="font-size:11px;color:var(--color-text-secondary)">ЦНС восстанавливается</span></div>
+  </div>
+  <div class="sh">Контроль и плато</div>
+  <div class="card"><div style="font-size:12px;color:var(--color-text-secondary);line-height:1.7">Взвешивайся раз в неделю, утром натощак. Смотри на среднее за 2 недели. Фото раз в 4 недели. Плато 3+ нед → проверь трекер калорий + добавь 1500–2000 шагов. Не снижай калории ниже 2100.</div></div>
+</div>
+</div>
+
+<script>
+const days=[
+  {
+    name:"Воскресенье — Push A",
+    focus:"Грудь (низ/середина) · Плечи · Трицепс",
+    tags:["tr","tg"],tl:["Push","Грудь акцент"],
+    exs:[
+      {n:"Жим штанги лёжа (#11)",s:"4 × 5–6",w:"90–95 кг, RIR 1–2",t:"Главный силовой — лопатки сведены, дуга естественная",a:"Альт: жим в Смите лёжа"},
+      {n:"Pec Deck (#19)",s:"3 × 12–15",w:"60–75 кг",t:"Изоляция грудных — пик сокращения 1 сек, не бросай",a:"Альт: кроссовер в кабеле"},
+      {n:"Жим гантелей на наклонной 30° (#3)",s:"3 × 10–12",w:"30–34 кг пара",t:"Акцент верхняя грудь + передние дельты",a:"Альт: жим в Смите на наклонной"},
+      {n:"Жим стоя / Overhead Press (#13)",s:"4 × 10–12",w:"гантели 16–18 кг",t:"Локти чуть спереди, не запрокидывай голову",a:"Альт: жим штанги сидя"},
+      {n:"Разведения кабель / Lateral Raise (#6)",s:"4 × 12–15",w:"18–22 кг сумма",t:"Медленный эксцентрик 3 сек, нет читинга",a:"Альт: разведения гантелями стоя"},
+      {n:"Отжимания на брусьях с весом (#17)",s:"3 × 10–12",w:"+10–15 кг",t:"Корпус прямой, нет завала вперёд — трицепс акцент",a:"Альт: жим узким хватом лёжа"},
+      {n:"Кабельное разгибание трицепс сверху (#8)",s:"3 × 15–20",w:"25–32 кг",t:"Длинная головка под растяжением — финишер",a:"Альт: французский жим EZ"},
+    ]
+  },
+  {
+    name:"Понедельник — Pull A",
+    focus:"Спина (широчайшие) · Бицепс · Задние дельты",
+    tags:["tb"],tl:["Pull"],
+    exs:[
+      {n:"Подтягивания (#2)",s:"4 × 6–10",w:"б/в или +5–10 кг",t:"Полный диапазон, пик — лопатки вместе, не инерция",a:"Альт: верхний блок широким хватом"},
+      {n:"Machine Lat Pullover (#25)",s:"3 × 12–15",w:"55–65 кг",t:"Руки прямые, акцент нижние широчайшие",a:"Альт: пуловер на блоке стоя"},
+      {n:"Chest Supported T-Bar Row (#5)",s:"4 × 10–12",w:"50–60 кг",t:"Упор грудью убирает читинг — чистая тяга спиной",a:"Альт: тяга гантели в упоре одной рукой"},
+      {n:"Reverse Pec Deck (#18)",s:"3 × 15–20",w:"45–55 кг",t:"Задние дельты + ромбовидные, не тяни трапецией",a:"Альт: лицевые тяги (face pull)"},
+      {n:"Preacher Curl EZ (#7)",s:"3 × 10–12",w:"30–35 кг",t:"Строгая техника, нет разгибания в верхней точке",a:"Альт: сгибания на скамье Скотта"},
+      {n:"Bayesian Cable Curl (#15)",s:"3 × 12–15",w:"10–14 кг кажд.",t:"Кабель сзади — пик сокращения и растяжение бицепса",a:"Альт: сгибания гантелями стоя"},
+    ]
+  },
+  {
+    name:"Вторник — Legs A",
+    focus:"Квадрицепс (акцент) · Ягодицы · Икры · Кор",
+    tags:["tg","tp"],tl:["Legs","+ Кор"],
+    exs:[
+      {n:"Приседания (#1)",s:"4 × 8–10",w:"82–88 кг, RIR 1–2",t:"Глубина параллель+, грудь вертикально, колени в носки",a:"Альт: жим ногами широкая постановка"},
+      {n:"Leg Extension (#9)",s:"3 × 15–20",w:"45–55 кг",t:"Финишер квадрицепса, пауза вверху 1 сек",a:"Альт: разгибания в машине Hackett"},
+      {n:"Walking Lunge (#12)",s:"3 × 12 шаг/ногу",w:"гантели 14–18 кг",t:"Шаг широкий, колено не уходит за носок",a:"Альт: болгарские сплит-приседания"},
+      {n:"Nautilus Glute Drive (#16)",s:"3 × 12–15",w:"рабочий вес тренажёра",t:"Пик сокращения ягодиц вверху, не поясница",a:"Альт: ягодичный мост со штангой"},
+      {n:"Standing Calf Raise (#23)",s:"4 × 15–20",w:"60–80 кг",t:"Полный диапазон — задержка 2 сек внизу",a:"Альт: подъём на носки в жиме ногами"},
+      {n:"Cable Crunch (#20)",s:"3 × 15–20",w:"20–30 кг",t:"Округляй поясницу, не тяни шею",a:"Альт: скручивания на наклонной скамье"},
+      {n:"Планка с отягощением",s:"3 × 30–45 сек",w:"блин 10–15 кг",t:"Нейтральный позвоночник, не проваливай таз",a:"Альт: вакуум (10 повт. × 10 сек)"},
+    ]
+  },
+  {
+    name:"Среда — Push B",
+    focus:"Грудь (верх) · Плечи · Трицепс",
+    tags:["tr","ta"],tl:["Push","Верх груди"],
+    exs:[
+      {n:"Жим гантелей наклон 45° (#3 вариант)",s:"4 × 10–12",w:"32–36 кг пара",t:"Акцент верхняя грудь, не запрокидывай гантели",a:"Альт: жим штанги наклонная 45°"},
+      {n:"Pec Deck (#19 верхний кабель)",s:"3 × 12–15",w:"50–60 кг",t:"Руки сходятся на уровне подбородка — верхняя грудь",a:"Альт: кроссовер снизу вверх"},
+      {n:"Жим Арнольда",s:"3 × 12–15",w:"14–16 кг",t:"Ротация при подъёме — все пучки дельт",a:"Альт: жим гантелей сидя нейтр. хват"},
+      {n:"Lateral Raise кабель (#6)",s:"4 × 15–20",w:"8–12 кг кажд.",t:"Медленно вниз, нет инерции — читают средние дельты",a:"Альт: разведения гантелями в наклоне"},
+      {n:"Dips с весом (#17 финишер)",s:"3 × 12–15",w:"+5 кг или б/в",t:"Небольшой наклон вперёд = грудь, прямо = трицепс",a:"Альт: отжимания узкая постановка"},
+      {n:"Кабельное разгибание трицепс (#8)",s:"3 × 12–15",w:"28–35 кг",t:"Локти неподвижны, полный диапазон",a:"Альт: разгибание гантели из-за головы"},
+    ]
+  },
+  {
+    name:"Четверг — Pull B",
+    focus:"Спина (нижн. широчайшие) · Бицепс · Задние дельты",
+    tags:["tb","tp"],tl:["Pull","Нижн. лат"],
+    exs:[
+      {n:"Верхний блок узкий нейтральный хват",s:"4 × 10–12",w:"70–77 кг",t:"Тяни локоть к тазу — акцент нижние широчайшие",a:"Альт: подтягивания параллельным хватом"},
+      {n:"Machine Lat Pullover (#25)",s:"3 × 12–15",w:"60–70 кг",t:"Второй раз за неделю — финишер широчайших",a:"Альт: пуловер с гантелью лёжа"},
+      {n:"Chest Supported Row (#5 гантели)",s:"4 × 10–12",w:"36–40 кг пара",t:"Грудь на скамье, тяни к поясу — не к плечу",a:"Альт: горизонтальная тяга в кабеле"},
+      {n:"Reverse Pec Deck (#18)",s:"3 × 15–20",w:"50–60 кг",t:"Второй раз — здоровье ротаторов плеча",a:"Альт: тяга верёвки к лицу"},
+      {n:"Шраги с гантелями (#24)",s:"3 × 15–20",w:"26–30 кг кажд.",t:"Чистое движение вверх, без ротации, задержка вверху",a:"Альт: шраги в кабеле"},
+      {n:"Bayesian Cable Curl (#15)",s:"3 × 12–15",w:"12–15 кг кажд.",t:"Пиковое сокращение бицепса — не спеши",a:"Альт: молоток с гантелями сидя"},
+      {n:"Preacher Curl (#7 доп. подход)",s:"2 × 12–15",w:"28–32 кг",t:"Лёгкий финишер — насос в бицепсе",a:"Альт: сгибания на блоке стоя"},
+    ]
+  },
+  {
+    name:"Пятница — Legs B",
+    focus:"Бицепс бедра (акцент) · Ягодицы · Икры · Кор",
+    tags:["tg","tp"],tl:["Legs","+ Кор"],
+    exs:[
+      {n:"Румынская тяга (#4)",s:"4 × 10–12",w:"65–72 кг",t:"Нейтральный позвоночник, шарнир в бедре — не присед",a:"Альт: становая тяга (#14) / дефицитная RDL"},
+      {n:"Seated Leg Curl (#10)",s:"4 × 12–15",w:"40–50 кг",t:"Сидячий вариант — пик растяжения бицепса бедра",a:"Альт: лёжа leg curl"},
+      {n:"Жим ногами узкая постановка",s:"3 × 15",w:"100–110 кг",t:"Стопы узко и низко — акцент квадрицепс/бицепс бедра",a:"Альт: приседания гоблет с гирей"},
+      {n:"Nautilus Glute Drive (#16)",s:"3 × 15",w:"рабочий вес тренажёра",t:"Второй раз за неделю — ягодицы максимально",a:"Альт: ягодичный мост одна нога"},
+      {n:"Standing Calf Raise (#23)",s:"3 × 20",w:"50–70 кг",t:"Финишер икр — высокий объём",a:"Альт: икры в жиме ногами"},
+      {n:"Cable Crunch (#20)",s:"3 × 15–20",w:"22–32 кг",t:"Второй раз за неделю — кор приоритет",a:"Альт: скручивания с диском"},
+      {n:"Обратные скручивания на наклонной",s:"3 × 15–20",w:"б/в",t:"Нижний пресс + сгибатели бедра",a:"Альт: подъём ног в висе"},
+    ]
+  },
+  {
+    name:"Суббота — Отдых",
+    focus:"Восстановление ЦНС",
+    tags:[],tl:[],
+    exs:[]
+  }
+];
+
+const meals=[
+  {time:"07:00 · Завтрак",name:"Мягкий белково-углеводный старт",desc:"3 яйца всмятку + 3 белка · 80 г овсянки на воде с бананом · 1 ч.л. масла гхи. Яйца всмятку — лучше усваиваются, чем яичница.",macros:["Б: 42 г","У: 65 г","Ж: 16 г","≈580 ккал"]},
+  {time:"12:30 · Обед",name:"Основной приём — варёная птица + крупа",desc:"200 г куриная грудка варёная (не жареная) · 120 г гречка или рис варёный · 100 г кабачок/морковь тушёные (не сырые). Варка и тушение = минимум раздражения ЖКТ.",macros:["Б: 50 г","У: 70 г","Ж: 8 г","≈556 ккал"]},
+  {time:"16:00 · Пре-воркаут",name:"Лёгкий углеводный перекус",desc:"1 банан · 150 г греческий йогурт 0% (пробиотики) · 20 г рисовые крекеры. Греческий йогурт — в отличие от молока не вызывает метеоризм.",macros:["Б: 22 г","У: 55 г","Ж: 1 г","≈318 ккал"]},
+  {time:"19:30 · Пост-воркаут",name:"Белок + умеренные углеводы",desc:"200 г рыба (треска, судак, хек) варёная/запечённая · 150 г картофель варёный или 100 г рис · 5 г креатин. Рыба нежирная — легче переваривается после тренировки.",macros:["Б: 44 г","У: 38 г","Ж: 4 г","≈368 ккал"]},
+  {time:"22:00 · Перед сном",name:"Казеин — медленный белок",desc:"200 г творог 0% (протёртый) · 1 ч.л. льняное масло · корица. Творог протёртый = лучше усвояемость. Или 30 г казеинового протеина на воде.",macros:["Б: 36 г","У: 8 г","Ж: 7 г","≈243 ккал"]}
+];
+
+function renderDays(){
+  const c=document.getElementById('days-list');
+  days.forEach((d,i)=>{
+    const w=document.createElement('div');
+    if(!d.exs.length){
+      w.innerHTML=`<div class="rest"><div style="font-size:22px;color:var(--color-text-secondary);margin-bottom:6px"><i class="ti ti-bed" aria-hidden="true"></i></div><div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">Суббота — день отдыха</div><div style="font-size:11px;color:var(--color-text-secondary)">Сон 8+ ч · мобилити 10 мин · лёгкая прогулка</div></div>`;
+    } else {
+      const tags=d.tags.map((t,j)=>`<span class="tag ${t}">${d.tl[j]}</span>`).join('');
+      w.innerHTML=`<button class="day-btn" onclick="tog(${i})" id="b${i}"><div><div class="dn">${d.name}</div><div class="df">${d.focus}</div></div><i class="ti ti-chevron-down chev" aria-hidden="true"></i></button>
+      <div class="detail" id="d${i}"><div style="margin-bottom:7px">${tags}</div>${d.exs.map(e=>`<div class="exrow"><div class="exname">${e.n}</div><div class="exd">${e.s} · ${e.w}</div><div class="extip"><i class="ti ti-bulb" aria-hidden="true"></i> ${e.t}</div><div class="exalt"><i class="ti ti-switch-2" aria-hidden="true"></i> ${e.a}</div></div>`).join('')}</div>`;
+    }
+    c.appendChild(w);
+  });
+}
+
+function tog(i){
+  const b=document.getElementById('b'+i),det=document.getElementById('d'+i),o=det.classList.contains('open');
+  document.querySelectorAll('.detail').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.day-btn').forEach(x=>x.classList.remove('open'));
+  if(!o){det.classList.add('open');b.classList.add('open');}
+}
+
+function renderMeals(){
+  const c=document.getElementById('meals-list');
+  meals.forEach(m=>{
+    const d=document.createElement('div');
+    d.className='mcard';
+    d.innerHTML=`<div class="mtime">${m.time}</div><div class="mname">${m.name}</div><div class="mdesc">${m.desc}</div><div class="macros">${m.macros.map(x=>`<span class="mac">${x}</span>`).join('')}</div>`;
+    c.appendChild(d);
+  });
+}
+
+function S(id,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+renderDays();
+renderMeals();
+</script>
